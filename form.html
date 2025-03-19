@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visa Information</title>
+    <style>
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+        }
+
+        h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #2a3d66;
+            text-align: center;
+        }
+
+        label {
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        select, input[type="submit"] {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            margin: 10px 0;
+            width: 100%;
+        }
+
+        .visa-info {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 20px;
+            color: #0066cc;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 14px 20px;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+            transform: translateY(-2px);
+        }
+
+        input[type="submit"]:active {
+            background-color: #388e3c;
+            transform: translateY(2px);
+        }
+
+        input[type="submit"]:focus {
+            outline: none;
+            box-shadow: 0 0 5px rgba(0, 150, 255, 0.5);
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Visa Information</h2>
+    <form method="post" action="formvalid.php">
+        <label for="country">Select Country:</label>
+        <select name="country" id="country" onchange="displayVisaInfo()">
+            <option value="">Select a country...</option>
+            <option value="usa">USA</option>
+            <option value="canada">Canada</option>
+            <option value="australia">Australia</option>
+            <option value="india">India</option>
+            <option value="china">China</option>
+        </select>
+
+        <div class="visa-info" id="visaInfo">Please select a country.</div>
+
+        <input type="submit" value="Submit">
+    </form>
+</div>
+
+<script>
+    function displayVisaInfo() {
+        const country = document.getElementById("country").value;
+        let visaMessage = "";
+
+        switch(country) {
+            case "usa":
+                visaMessage = "Visa required for most applicants.";
+                break;
+            case "canada":
+                visaMessage = "Visa required unless you have an eTA.";
+                break;
+            case "australia":
+                visaMessage = "Visa required before travel.";
+                break;
+            case "india":
+                visaMessage = "Visa depends on the duration of stay.";
+                break;
+            case "china":
+                visaMessage = "eVisa available for eligible travelers.";
+                break;
+            default:
+                visaMessage = "Please select a country.";
+        }
+
+        document.getElementById("visaInfo").textContent = visaMessage;
+    }
+</script>
+
+</body>
+</html>
