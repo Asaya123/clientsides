@@ -1,13 +1,13 @@
 <?php
 $visaInfo = "";
 
-// Check if the form has been submitted
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Check if a country was selected
+
     if (empty($_POST["country"])) {
         $visaInfo = "Invalid country selection.";
     } else {
-        // Get the selected country
+       
         $country = $_POST["country"];
 
         // Determine visa information based on selected country
